@@ -29,8 +29,7 @@ export function Benefits() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-            Why Mandal Mediators
-          </span>
+            Why this network</span>
           <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl lg:text-5xl">
             A structured pipeline for a{" "}
             <span className="text-gradient-gold">sacred opportunity</span>

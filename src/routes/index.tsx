@@ -1,26 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/site-header";
 import { Hero } from "@/components/site/hero";
+import { AboutUs } from "@/components/site/about-us";
 import { DualPov } from "@/components/site/dual-pov";
 import { Benefits } from "@/components/site/benefits";
 import { RegistrationEngine } from "@/components/site/registration-engine";
 import { SiteFooter } from "@/components/site/site-footer";
 
+const SITE_TITLE =
+  "Shri Gauri Ganesh Branding — Mumbai Ganesh Utsav Sponsorship Network";
+const SITE_DESC =
+  "Mumbai's most trusted mediation network between corporate sponsors and Sarvajanik Ganesh Utsav Mandals. Deep knowledge of Mumbai's markets, festivals, people, and faith.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mandal Mediators — Mumbai Ganesh Utsav Sponsorship, Mediated" },
-      {
-        name: "description",
-        content:
-          "Direct, mediated access between India's biggest brands and Mumbai's grandest Sarvajanik Ganesh Utsav Mandals. Zero ground-level hunting, full compliance, verified network reach.",
-      },
-      { property: "og:title", content: "Mandal Mediators — Ganesh Utsav Sponsorship, Mediated" },
-      {
-        property: "og:description",
-        content:
-          "Your exclusive gateway to sponsorship across all major Mumbai Ganesh Utsav Mandals — without field roaming or operational friction.",
-      },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESC },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESC },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESC },
     ],
   }),
   component: Index,
@@ -32,6 +32,7 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
+        <AboutUs />
         <DualPov />
         <Benefits />
         <RegistrationEngine />

@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { Briefcase, Landmark, Send, CheckCircle2 } from "lucide-react";
+import {
+  submitSponsorRegistration,
+  submitMandalRegistration,
+} from "@/lib/registrations.functions";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -141,6 +146,7 @@ const inputCls =
   "h-12 rounded-md border-gold/25 bg-background/50 text-ivory placeholder:text-foreground/35 focus-visible:border-gold/70 focus-visible:ring-gold/30";
 
 function SponsorForm({ onDone }: { onDone: () => void }) {
+  const submitFn = useServerFn(submitSponsorRegistration);
   const form = useForm<SponsorValues>({
     resolver: zodResolver(sponsorSchema),
     defaultValues: {
@@ -154,11 +160,15 @@ function SponsorForm({ onDone }: { onDone: () => void }) {
     },
   });
 
-  const submit = (values: SponsorValues) => {
-    void values;
-    toast.success("Sponsor registration received", { description: SUCCESS_MSG });
-    form.reset();
-    onDone();
+  const submit = async (values: SponsorValues) => {
+    try {
+      await submitFn({ data: values });
+      toast.success("Sponsor registration received", { description: SUCCESS_MSG });
+      form.reset();
+      onDone();
+    } catch (err: any) {
+      toast.error(err?.message ?? "Could not submit. Please try again.");
+    }
   };
 
   return (
@@ -268,6 +278,7 @@ function SponsorForm({ onDone }: { onDone: () => void }) {
 }
 
 function MandalForm({ onDone }: { onDone: () => void }) {
+  const submitFn = useServerFn(submitMandalRegistration);
   const form = useForm<MandalValues>({
     resolver: zodResolver(mandalSchema),
     defaultValues: {
@@ -281,11 +292,15 @@ function MandalForm({ onDone }: { onDone: () => void }) {
     },
   });
 
-  const submit = (values: MandalValues) => {
-    void values;
-    toast.success("Mandal registration received", { description: SUCCESS_MSG });
-    form.reset();
-    onDone();
+  const submit = async (values: MandalValues) => {
+    try {
+      await submitFn({ data: values });
+      toast.success("Mandal registration received", { description: SUCCESS_MSG });
+      form.reset();
+      onDone();
+    } catch (err: any) {
+      toast.error(err?.message ?? "Could not submit. Please try again.");
+    }
   };
 
   return (

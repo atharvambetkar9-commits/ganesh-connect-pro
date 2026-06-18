@@ -25,21 +25,22 @@ export function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/5 px-4 py-1.5 backdrop-blur">
             <Sparkles className="h-3.5 w-3.5 text-gold" />
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-gold">
-              Ganesh Utsav · Mumbai · 2026
+              Shri Gauri Ganesh · Mumbai · Ganesh Utsav 2026
             </span>
           </div>
 
           <h1 className="mt-6 font-display text-4xl leading-[1.05] text-ivory sm:text-5xl lg:text-6xl xl:text-7xl">
-            Bridging Mumbai&rsquo;s{" "}
-            <span className="text-gradient-gold">Grandest Mandals</span>
-            <br className="hidden sm:block" /> with India&rsquo;s{" "}
-            <em className="font-serif italic text-[var(--accent)]">Biggest Brands</em>.
+            Mumbai&rsquo;s Most Trusted{" "}
+            <span className="text-gradient-gold">Ganesh Utsav</span>
+            <br className="hidden sm:block" /> Sponsorship{" "}
+            <em className="font-serif italic text-[var(--accent)]">Network</em>.
           </h1>
 
           <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-foreground/75 sm:text-lg">
-            Your exclusive, direct gateway to absolute sponsorship access across all
-            major Sarvajanik Ganesh Utsav Mandals in Mumbai. No field hunting, no
-            operational friction&mdash;just seamless hyper-local branding.
+            Shri Gauri Ganesh Branding Mandal Sponsorship Network is your direct,
+            mediated gateway to every major Sarvajanik Ganesh Utsav Mandal across
+            Mumbai. Built by Mumbaikars who know the city&rsquo;s markets, festivals,
+            and faith — inside out.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

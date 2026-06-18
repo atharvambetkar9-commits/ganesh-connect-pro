@@ -10,10 +10,11 @@ import {
 
 const NAV = [
   { href: "#home", label: "Home" },
+  { href: "#about", label: "About Us" },
   { href: "#sponsors", label: "For Sponsors" },
   { href: "#mandals", label: "For Mandals" },
   { href: "#benefits", label: "Benefits" },
-  { href: "#register", label: "Registration Form" },
+  { href: "#register", label: "Register" },
 ];
 
 function openRegister(role: "sponsor" | "mandal" = "sponsor") {
@@ -35,26 +36,26 @@ export function SiteHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-gold/20 bg-background/80 backdrop-blur-xl"
+          ? "border-b border-gold/20 bg-background/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-royal shadow-gold">
-            <span className="font-display text-base text-gold">M</span>
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a href="#home" className="flex min-w-0 items-center gap-2.5">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-royal shadow-gold">
+            <span className="font-display text-base text-gold">ॐ</span>
           </span>
-          <div className="leading-tight">
-            <div className="font-display text-sm tracking-[0.18em] text-ivory">
-              MANDAL
+          <div className="min-w-0 leading-tight">
+            <div className="truncate font-display text-[11px] tracking-[0.18em] text-ivory sm:text-xs">
+              SHRI GAURI GANESH
             </div>
-            <div className="-mt-0.5 font-display text-xs tracking-[0.32em] text-gold">
-              MEDIATORS
+            <div className="-mt-0.5 truncate font-display text-[9px] tracking-[0.22em] text-gold sm:text-[10px]">
+              BRANDING · MANDAL · SPONSORSHIP NETWORK
             </div>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-6 xl:flex">
           {NAV.map((n) => (
             <a
               key={n.href}
@@ -78,7 +79,7 @@ export function SiteHeader() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-foreground lg:hidden"
+                className="text-foreground xl:hidden"
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />

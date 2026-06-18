@@ -146,13 +146,10 @@ export const adminUpdateRegistration = createServerFn({ method: "POST" })
       data.kind === "sponsor"
         ? "sponsor_registrations"
         : "mandal_registrations";
-    const patch: Record<string, unknown> = {};
+    const patch: { status?: "new" | "contacted" | "closed"; admin_notes?: string | null } = {};
     if (data.status !== undefined) patch.status = data.status;
     if (data.admin_notes !== undefined) patch.admin_notes = data.admin_notes;
-    const { error } = await context.supabase
-      .from(table)
-      .update(patch)
-      .eq("id", data.id);
+    const { error } = await (context.supabase.from(table) as any).update(patch).eq("id", data.id);
     if (error) throw new Error("Update failed");
     return { ok: true };
   });

@@ -14,16 +14,133 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      mandal_registrations: {
+        Row: {
+          admin_notes: string | null
+          area: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          created_at: string
+          footfall: string
+          id: string
+          mandal_name: string
+          past_sponsors: string | null
+          status: Database["public"]["Enums"]["reg_status"]
+          updated_at: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          area: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          created_at?: string
+          footfall: string
+          id?: string
+          mandal_name: string
+          past_sponsors?: string | null
+          status?: Database["public"]["Enums"]["reg_status"]
+          updated_at?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          area?: string
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string
+          created_at?: string
+          footfall?: string
+          id?: string
+          mandal_name?: string
+          past_sponsors?: string | null
+          status?: Database["public"]["Enums"]["reg_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      sponsor_registrations: {
+        Row: {
+          admin_notes: string | null
+          budget: string
+          company_name: string
+          created_at: string
+          email: string
+          id: string
+          notes: string | null
+          phone: string
+          rep_name: string
+          status: Database["public"]["Enums"]["reg_status"]
+          updated_at: string
+          zones: string[]
+        }
+        Insert: {
+          admin_notes?: string | null
+          budget: string
+          company_name: string
+          created_at?: string
+          email: string
+          id?: string
+          notes?: string | null
+          phone: string
+          rep_name: string
+          status?: Database["public"]["Enums"]["reg_status"]
+          updated_at?: string
+          zones?: string[]
+        }
+        Update: {
+          admin_notes?: string | null
+          budget?: string
+          company_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          notes?: string | null
+          phone?: string
+          rep_name?: string
+          status?: Database["public"]["Enums"]["reg_status"]
+          updated_at?: string
+          zones?: string[]
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      reg_status: "new" | "contacted" | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +267,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      reg_status: ["new", "contacted", "closed"],
+    },
   },
 } as const

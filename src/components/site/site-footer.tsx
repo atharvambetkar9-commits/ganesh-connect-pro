@@ -25,6 +25,8 @@ export function SiteFooter() {
           <a href="#mandals" className="hover:text-gold">For Mandals</a>
           <a href="#benefits" className="hover:text-gold">Benefits</a>
           <a href="#register" className="hover:text-gold">Register</a>
+          <a href="#contact" className="hover:text-gold">Contact</a>
+          <a href="tel:+917977396855" className="hover:text-gold">+91 79773 96855</a>
         </nav>
 
         <div className="text-center text-xs text-foreground/50 lg:text-right">

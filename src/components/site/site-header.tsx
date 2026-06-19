@@ -15,6 +15,7 @@ const NAV = [
   { href: "#mandals", label: "For Mandals" },
   { href: "#benefits", label: "Benefits" },
   { href: "#register", label: "Register" },
+  { href: "#contact", label: "Contact" },
 ];
 
 function openRegister(role: "sponsor" | "mandal" = "sponsor") {

@@ -5,6 +5,7 @@ import { AboutUs } from "@/components/site/about-us";
 import { DualPov } from "@/components/site/dual-pov";
 import { Benefits } from "@/components/site/benefits";
 import { RegistrationEngine } from "@/components/site/registration-engine";
+import { ContactUs } from "@/components/site/contact-us";
 import { SiteFooter } from "@/components/site/site-footer";
 
 const SITE_TITLE =
@@ -36,6 +37,7 @@ function Index() {
         <DualPov />
         <Benefits />
         <RegistrationEngine />
+        <ContactUs />
       </main>
       <SiteFooter />
     </div>

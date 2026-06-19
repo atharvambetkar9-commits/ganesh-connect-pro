@@ -119,37 +119,19 @@ function AuthPage() {
             </Button>
           </form>
 
-          <div className="mt-6 flex flex-col gap-2">
-            <button
-              type="button"
-              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-              className="w-full text-center text-sm text-foreground/60 hover:text-gold"
-            >
-              {mode === "signin"
-                ? "First-time setup? Create the admin account →"
-                : "Already have an account? Sign in →"}
-            </button>
-            {mode === "signin" && (
-              <button
-                type="button"
-                onClick={async () => {
-                  if (!email) return toast.error("Enter your email above first");
-                  const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                    redirectTo: `${window.location.origin}/reset-password`,
-                  });
-                  if (error) toast.error(error.message);
-                  else toast.success("Password reset link sent — check your inbox");
-                }}
-                className="w-full text-center text-xs text-foreground/50 hover:text-gold"
-              >
-                Forgot password? Send reset link
-              </button>
-            )}
-          </div>
+          <button
+            type="button"
+            onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+            className="mt-6 w-full text-center text-sm text-foreground/60 hover:text-gold"
+          >
+            {mode === "signin"
+              ? "First-time setup? Create the admin account →"
+              : "Already have an account? Sign in →"}
+          </button>
 
           <p className="mt-6 rounded-md border border-gold/15 bg-background/40 p-3 text-xs leading-relaxed text-foreground/60">
-            Admin access is restricted to <span className="text-gold">gauriganesh.branding@gmail.com</span>.
-            Only that account can view, edit, or delete registration entries.
+            Admin access is restricted to the registered master email. Only that account
+            can view, edit, or delete registration entries.
           </p>
         </div>
       </div>

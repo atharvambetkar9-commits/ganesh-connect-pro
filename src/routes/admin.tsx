@@ -219,25 +219,6 @@ function AdminPage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard label="Sponsors" value={data.data?.sponsors?.length ?? 0} />
-          <StatCard label="Mandals" value={data.data?.mandals?.length ?? 0} />
-          <StatCard
-            label="New (24h)"
-            value={
-              [...(data.data?.sponsors ?? []), ...(data.data?.mandals ?? [])].filter(
-                (r: any) => Date.now() - new Date(r.created_at).getTime() < 86_400_000,
-              ).length
-            }
-          />
-          <StatCard
-            label="Total"
-            value={(data.data?.sponsors?.length ?? 0) + (data.data?.mandals?.length ?? 0)}
-          />
-        </div>
-
-        <ChangePasswordPanel />
-
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="relative flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" />
@@ -344,65 +325,6 @@ function statusColor(s: Status) {
   if (s === "new") return "bg-[var(--accent)]/20 text-[var(--accent)] border-[var(--accent)]/40";
   if (s === "contacted") return "bg-blue-500/20 text-blue-300 border-blue-500/40";
   return "bg-green-500/20 text-green-300 border-green-500/40";
-}
-
-function StatCard({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-xl border border-gold/20 bg-card/40 p-4">
-      <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-gold/80">
-        {label}
-      </div>
-      <div className="mt-1 font-display text-3xl text-ivory">{value}</div>
-    </div>
-  );
-}
-
-function ChangePasswordPanel() {
-  const [open, setOpen] = useState(false);
-  const [pw, setPw] = useState("");
-  const [busy, setBusy] = useState(false);
-  return (
-    <div className="mb-6 rounded-xl border border-gold/20 bg-card/40 p-4">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="text-sm font-semibold text-gold hover:opacity-80"
-      >
-        {open ? "− Hide" : "+ Change admin password"}
-      </button>
-      {open && (
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <Input
-            type="password"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            placeholder="New password (min 8 chars)"
-            className="h-11 flex-1 border-gold/25 bg-background/40 text-ivory"
-          />
-          <Button
-            disabled={busy || pw.length < 8}
-            onClick={async () => {
-              setBusy(true);
-              try {
-                const { error } = await supabase.auth.updateUser({ password: pw });
-                if (error) throw error;
-                toast.success("Password updated");
-                setPw("");
-                setOpen(false);
-              } catch (e: any) {
-                toast.error(e?.message ?? "Update failed");
-              } finally {
-                setBusy(false);
-              }
-            }}
-            className="h-11 bg-gradient-to-r from-[var(--crimson)] to-[var(--accent)] font-semibold text-ivory shadow-royal"
-          >
-            {busy ? "Saving…" : "Update password"}
-          </Button>
-        </div>
-      )}
-    </div>
-  );
 }
 
 function RegRow({

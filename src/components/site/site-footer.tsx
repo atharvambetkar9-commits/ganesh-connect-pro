@@ -40,6 +40,16 @@ export function SiteFooter() {
         <div className="text-center text-xs text-foreground/50 lg:text-right">
           © {new Date().getFullYear()} Shri Gauri Ganesh Branding Mandal Sponsorship Network.
           <div className="mt-1 font-display tracking-wider text-gold">Ganpati Bappa Morya 🙏</div>
+          <div className="mt-2">
+            <a
+              href="/auth"
+              aria-label="Master admin sign in"
+              title="Master admin"
+              className="inline-flex items-center gap-1 rounded-full border border-gold/25 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/70 hover:border-gold hover:text-gold"
+            >
+              🔒 Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
